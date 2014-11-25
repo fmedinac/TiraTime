@@ -1,10 +1,16 @@
  // Managing the poll list
         function JogadoresListCtrl($scope, Jogador) {
           $scope.jogadores = Jogador.query();
+
         }
         // Voting / viewing poll results
-        function JogadorEditCtrl($scope, $routeParams, Jogador) {
+        function JogadorEditCtrl($scope, $routeParams, $location, Jogador) {
+          console.log($location);
+          // $scope = Jogador.query();
           $scope.jogador = Jogador.get({jogadorId: $routeParams.jogadorId});
+
+
+          // console.log(jogador.toString());
 
           // $scope.jogador = Jogador.get({jogadorId: $routeParams.jogadorId});
         // $scope.entry = Movie.get({ id: $scope.id }, function() {
@@ -14,12 +20,32 @@
         //     //updated in the backend
         //   });
         // });
+          $scope.editJogador = function() {
+            Jogador.get({jogadorId: $routeParams.jogadorId}, function(jogador){
+              // console.log(wtf);
+              // jogador = $scope.jogador;
+              jogador.nome = $scope.jogador.nome;
+              jogador.rating = $scope.jogador.rating;
+              jogador.$update({jogadorId: jogador._id}, function(p, resp){
+                if(!p.error) { 
+                  $location.path('jogadores');
+                } else {
+                  alert('Deu pau :(');
+                }
+              });
+            });
           // $scope.editJogador = function() {
-          //   $scope.jogador = Jogador.get({jogadorId: $routeParams.jogadorId}, function(){
-          //     $scope.jogador.nome = 'something else';
-          //     $scope.jogador.$update(function() {
-          //       //updated in the backend
-          //       console.log("saved");
+          //   Jogador.get({jogadorId: $routeParams.jogadorId}, function(jogador){
+          //     // console.log(wtf);
+          //     // jogador = $scope.jogador;
+          //     jogador.nome = $scope.jogador.nome;
+          //     jogador.rating = $scope.jogador.rating;
+          //     jogador.$save({jogadorId: jogador._id}, function(p, resp){
+          //       if(!p.error) { 
+          //         $location.path('jogadores');
+          //       } else {
+          //         alert('Deu pau :(');
+          //       }
           //     });
           //   });
           // //   console.log("EDITAR");
@@ -32,21 +58,21 @@
           // //   } else {
           // //     alert('Jogador sem nome ou sem nota?');
           // //   }
-          // };
+          };
 
 
           $scope.deletarJogador = function() {
             console.log($scope);
 
-            var deletarJogador = Jogador.get({_id: $routeParams.jogadorId}, function(jogador){
-              // console.log(jogador);
-              // jogador.$delete(function(p, resp) {
-              //   if(!p.error) { 
-              //     $location.path('jogadores');
-              //   } else {
-              //     alert('Deu pau :(');
-              //   }
-              // });
+            var deletarJogador = Jogador.get({jogadorId: $routeParams.jogadorId}, function(jogador){
+              console.log(jogador);
+              jogador.$delete({jogadorId: jogador._id}, function(p, resp) {
+                if(!p.error) { 
+                  $location.path('jogadores');
+                } else {
+                  alert('Deu pau :(');
+                }
+              });
             })
           }
         }

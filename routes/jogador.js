@@ -47,7 +47,7 @@ module.exports = function(app) {
       }
 
       if(!err) {
-        return res.send({ status: 'OK', jogador:jogador });
+        return res.send(jogador);
       } else {
 
         res.statusCode = 500;
@@ -109,6 +109,7 @@ module.exports = function(app) {
         res.statusCode = 404;
         return res.send({ error: 'Not found' });
       }
+      console.log(req);
 
       if (req.body.nome != null) jogador.nome = req.body.nome;
       if (req.body.rating != null) jogador.rating = req.body.rating;
@@ -166,7 +167,7 @@ module.exports = function(app) {
   }
 
   //Link routes and actions
-  app.get('/api/jogadores', findAllJogadores);
+  app.get('/api/jogadores/jogadores', findAllJogadores);
   app.get('/api/jogadores/:id', findJogadorById);
   app.post('/api/jogadores', addJogador);
   app.put('/api/jogadores/:id', updateJogador);
