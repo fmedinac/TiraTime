@@ -1,11 +1,6 @@
-angular.module('pollServices', ['ngResource'])
-	.factory('Poll', function($resource) {
-		return $resource('polls/:pollId', {}, {
-		  query: { method: 'GET', params: { pollId: 'polls' }, isArray: true }
-		})
-	})
+angular.module('jogadoresServices', ['ngResource'])
 	.factory('Jogador', function($resource) {
-		return $resource('jogadores/:jogadorId', {}, {
+		return $resource('/api/:jogadorId', {}, {
 		  query: { method: 'GET', params: { jogadorId: 'jogadores' }, isArray: true }
 		})
 	})

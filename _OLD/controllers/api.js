@@ -11,15 +11,23 @@ var Jogador = require('../models/jogador.js');
  
 exports.jogador = function(req, res) {
   var jogador = new Jogador({name: req.body.name, rating: req.body.rating});
-  jogador.save(function(err, saved) {
-    if(err) {
-      res.send(500);
-    } else {
-      console.log(saved);
-      res.send(200);
-    }
-  })
+  // jogador.save(function(err, saved) {
+  //   if(err) {
+  //     res.send(500);
+  //   } else {
+  //     console.log(saved);
+  //     res.send(200);
+  //   }
+  // });
 }
+
+exports.updateJogador = function(req, res) {
+  console.log(req);
+    // Jogador.findById(req.body., '', { lean: true }, function(err, jogador) {
+    //   console.log(jogador);
+    // });
+}
+
  
 exports.listaJogadores = function(req, res) {
   Jogador.find(function(err, jogadores) {
