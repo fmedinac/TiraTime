@@ -166,7 +166,7 @@ module.exports = function(app) {
   }
 
   //Link routes and actions
-  app.get('/api/jogadores', findAllJogadores);
+  app.get('/api/jogadores/jogadores', findAllJogadores);
   app.get('/api/jogadores/:id', findJogadorById);
   app.post('/api/jogadores', addJogador);
   app.put('/api/jogadores/:id', updateJogador);

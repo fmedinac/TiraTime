@@ -6,6 +6,8 @@
         function JogadorEditCtrl($scope, $routeParams, Jogador) {
           $scope.jogador = Jogador.get({jogadorId: $routeParams.jogadorId});
 
+          console.log($scope.jogador.$get());
+
           // $scope.jogador = Jogador.get({jogadorId: $routeParams.jogadorId});
         // $scope.entry = Movie.get({ id: $scope.id }, function() {
         //   // $scope.entry is fetched from server and is an instance of Entry
