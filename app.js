@@ -42,3 +42,4 @@ mongoose.connect('mongodb://localhost/tira-time', function(err, res) {
 });
 
 var routes = require('./routes/jogador')(app);
+var routesPelada = require('./routes/pelada')(app);

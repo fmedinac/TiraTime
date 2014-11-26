@@ -1,0 +1,43 @@
+ <div class="page-header">
+          <h1>Nova Pelada</h1>
+        </div>
+        <div class="row" ng-switch on="jogadores.length">
+          <div ng-switch-when="0">
+            <ul>
+              <li><em>Nenhum jogador cadastrado. Que tal
+   <a href="#/novoJogador">criar um</a>?</li>
+            </ul>
+          </div>
+          <div ng-switch-default>
+
+          <form role="form" ng-submit="createPelada()">
+            <h3>Selecione quem vai jogar</h3>
+            <div class="form-group">
+              <select ng-model="pelada.jogadores" class="form-control" multiple ng-options="jogador.nome for jogador in jogadores">
+
+              </select><!-- 
+              <ul>
+                <li ng-repeat="jogador in jogadores">
+                  <label>
+                    <input type="checkbox" name="jogadores[]" ng-model="pelada[jogadores]" value="{{jogador._id}}" /> {{jogador.nome}} - 
+                    <span ng-switch on="jogador.rating">
+                      <span ng-switch-when="1">Péssimo</span>
+                      <span ng-switch-when="2">Ruim</span>
+                      <span ng-switch-when="3">Medíocre</span>
+                      <span ng-switch-when="4">Bom</span>
+                    </span>
+                  </label>
+                </li>
+              </ul> -->
+            </div>
+          <div class="form-group">
+            <input type="text" ng-model="pelada.portime" class="form-control" placeholder="Jogadores por time" value="{{pelada.portime}}">
+          </div>
+              <div class="col-xs-6">
+                <button class="btn btn-primary pull-right" type="submit">Criar Pelada &raquo;</button>
+              </div>
+            </div>
+            <p>&nbsp;</p>
+          </form>
+        </div>
+      </div>

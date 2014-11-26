@@ -24,10 +24,27 @@ placeholder="Procurar um jogador">
                 <span ng-switch on="jogador.rating">
                   <span ng-switch-when="1">Péssimo</span>
                   <span ng-switch-when="2">Ruim</span>
-                  <span ng-switch-when="3">Medíocre</span>
+                  <span ng-switch-when="3">Regular</span>
                   <span ng-switch-when="4">Bom</span>
                 </span></a>
             </li>
           </ul>
         </div>
-        <p>&nbsp;</p>
+        <div class="row">
+          <div class="col">
+            <a href="#/novaPelada" class="btn btn-default"><span class="glyphicon 
+glyphicon-plus"></span> Nova Pelada</a>
+          </div>
+        </div>
+        <div class="row" ng-switch on="jogadores.length">
+          <ul ng-switch-when="0">
+            <li><em>Nenhuma pelada cadastrada. Que tal
+ <a href="#/novaPelada">criar uma</a>?</li>
+          </ul>
+          <ul ng-switch-default>
+            <li ng-repeat="pelada in peladas | filter:query">
+              <a href="#/peladas/{{pelada._id}}">
+                {{pelada.modified}}</a>
+            </li>
+          </ul>
+        </div>
