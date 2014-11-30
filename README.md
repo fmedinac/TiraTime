@@ -1,5 +1,4 @@
 #TiraTime
-========
 
 This simples AngularJS App was made for our weekly soccer game at Huge Rio.
 
